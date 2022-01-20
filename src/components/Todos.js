@@ -1,7 +1,7 @@
 import React from 'react';
 // import {useState} from 'react'
 import { useSelector } from 'react-redux';
-import { todosSelector } from '../store';
+import { todosSelector } from '../store/reducers/todosSlice';
 
 
 import TodoForm from './TodoForm';
