@@ -1,29 +1,15 @@
 import React from 'react';
-import {useState} from 'react'
+// import {useState} from 'react'
+import { useSelector } from 'react-redux';
+import { todosSelector } from '../store';
 
 
 import TodoForm from './TodoForm';
 
 
 const Todos = () => {
-    const [todos, setTodos] = useState([
-        {
-        id: 1,
-        title: 'viec 1',
-        completed: false
-        },
-        {
-            id: 2,
-            title: 'viec 2',
-            completed: false
-        },
-        {
-            id: 3,
-            title: 'viec 3',
-            completed: false
-        },
-    ])
-
+    // const [todos, setTodos] = useState()
+    const todos = useSelector(todosSelector)
    
     return (
         <div className = 'grid wide'>

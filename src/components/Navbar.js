@@ -1,7 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+import { todosSelector } from '../store';
 
 const Navbar = () => {
-    // const length = todos.length;
+    const todos = useSelector(todosSelector)
+    const length = todos.length;
     return (
             <div className = 'grid wide'>
                 <div className = 'row'>
@@ -11,7 +14,7 @@ const Navbar = () => {
                             <ul>
                                 <li>Home</li>
                                 <li>About</li>
-                                <li>Total todos: 3</li>
+                                <li>Total todos: {length}</li>
                             </ul>
                         
                         </div>
