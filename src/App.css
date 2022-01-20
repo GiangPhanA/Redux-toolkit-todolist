@@ -1,38 +1,106 @@
+body {
+	/* background: #fafafa; */
+	/* background: #f5f5f5; */
+	background: white;
+}
+
 .App {
-  text-align: center;
+	background: white;
+	/* background: #f5f5f5 */
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* Todos */
+.todo-list ul {
+	padding: 0 10px 10px 10px;
+	list-style-type: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.todo-list li {
+	padding: 10px;
+	cursor: pointer;
+	margin: 10px 0;
+	border-radius: 4px;
+	background: #fafafa;
+	color: black;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.todo-list li input[type='checkbox'] {
+	-ms-transform: scale(2); /* IE */
+	-moz-transform: scale(2); /* FF */
+	-webkit-transform: scale(2); /* Safari and Chrome */
+	-o-transform: scale(2); /* Opera */
+	transform: scale(2);
+	padding: 10px;
+	float: right;
 }
 
-.App-link {
-  color: #61dafb;
+.todo-list li.completed {
+	background: rgb(119, 218, 243);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo-list li button {
+	float: right;
+	margin-right: 20px;
+}
+
+.todo-list li button:hover {
+	cursor: pointer;
+	background: red;
+	color: white;
+}
+
+/* Navbar */
+.navbar {
+	padding: 2px;
+	text-align: center;
+	background: rgb(12, 12, 11);
+	color: white;
+}
+
+.navbar ul {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	list-style: none;
+	padding: 0;
+}
+
+/* TodoForm */
+form {
+	padding: 10px;
+}
+
+.todo-form {
+	/* background: #f5f5; */
+}
+
+input[type='text'] {
+	width: 100%;
+	box-sizing: border-box;
+	background:rgb(184, 144, 144);
+	padding: 10px;
+	margin: 6px 0;
+	border: 2px solid #fafafa;
+	border-radius: 2px;
+}
+
+input[type='submit'] {
+	margin: 10px auto;
+	padding: 10px;
+	background: greenyellow;
+	border-radius: 2px;
+	border: 1px solid #fafafa;
+	display: block;
+}
+
+input[type='submit']:hover {
+	opacity: 0.6;
+	cursor: pointer;
+}
+
+.navbar-title {
+	font-size: 16px;
+
 }
