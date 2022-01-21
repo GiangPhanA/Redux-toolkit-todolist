@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { todosSelector } from '../store/reducers/todosSlice';
 import TodoForm from './TodoForm';
-import {markComplete} from '../store/reducers/todosSlice'
+import {markComplete, deleteTodo} from '../store/reducers/todosSlice'
 
 
 const Todos = () => {
@@ -15,6 +15,11 @@ const Todos = () => {
 		 console.log(todoId)
 		 dispatch(markComplete(todoId))
 	}
+
+    const deleteSingleTodo = todoId => {
+        console.log("deleteid", todoId)
+         dispatch(deleteTodo(todoId))
+    }
    
     return (
         <div className = 'grid wide'>
@@ -28,9 +33,9 @@ const Todos = () => {
                                     <li key = {todo.id} className = {todo.completed ? 'completed' :''} >
                                         {todo.title}
                                         <input type = 'checkbox' checked = {todo.completed} 
-                                        onChange={toggleTodoCompleted.bind(this, todo.id)}
+                                        onChange={()=> toggleTodoCompleted(todo.id)}
                                         />
-                                        <button >Delete</button>
+                                        <button onClick = {() => deleteSingleTodo(todo.id)}>Delete</button>
                                         <button >Edit</button>
                                         </li>
                                     ))
