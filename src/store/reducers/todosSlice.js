@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, nanoid } from '@reduxjs/toolkit'
 
 const todosSlice = createSlice({
     name: 'todos',
@@ -20,6 +20,16 @@ const todosSlice = createSlice({
                 completed: false
             }
         ]
+    },
+    // khai bao 1 cv moi reducer bao gom action creator, acton, reducer
+    reducers: {
+        addTodo: (state, action) => {
+            state.allTodos.unshift ({
+                id: nanoid(),
+                title: action.payload,
+                completed: false
+            })
+        }
     }
 })
 
@@ -28,6 +38,9 @@ const todosReducer = todosSlice.reducer
 
 // Selector
 export const todosSelector = state => state.todosReducer.allTodos
+
+//export action
+export const {addTodo} = todosSlice.actions
 
 //Export reducer
 

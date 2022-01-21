@@ -1,5 +1,8 @@
 import React from 'react'
 import {useState} from 'react'
+import { useDispatch } from 'react-redux'
+import {addTodo} from '../store/reducers/todosSlice'
+
 
 
 
@@ -8,21 +11,13 @@ const TodoForm = () => {
     const onTitleChange = (event) => {
         setTitle(event.target.value)
     }
+    const dispatch = useDispatch()
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-
-        // if(title !== '') {
-        //     const newTodo ={
-        //         id: uuidv4(),
-        //         title,
-        //         completed: false
-        //     }
-        //     // console.log ('newTodo',newTodo)
-        //     // addTodo(newTodo)
-        //     setTitle('')
-        // }
-        
+        // console.log('Title:', title)
+        dispatch(addTodo(title)) 
+        setTitle('') 
 
     }
 
