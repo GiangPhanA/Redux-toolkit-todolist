@@ -23,13 +23,21 @@ const todosSlice = createSlice({
     },
     // khai bao 1 cv moi reducer bao gom action creator, acton, reducer
     reducers: {
-        addTodo: (state, action) => {
-            state.allTodos.unshift ({
-                id: nanoid(),
-                title: action.payload,
-                completed: false
-            })
-        }
+        // reducer khong duoc chua thanh phan ngau nhien
+        addTodo: { 
+            reducer(state, action) {
+              state.allTodos.unshift (action.payload)            
+            },
+            prepare(title){
+                return {
+                    payload: {
+                        id: nanoid(),
+                        title,
+                        completed: false
+                    }
+                }
+            }   
+        }   
     }
 })
 
