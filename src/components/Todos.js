@@ -1,15 +1,21 @@
 import React from 'react';
-// import {useState} from 'react'
+import {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { todosSelector } from '../store/reducers/todosSlice';
 import TodoForm from './TodoForm';
-import {markComplete, deleteTodo} from '../store/reducers/todosSlice'
+import {markComplete, deleteTodo, getTodos} from '../store/reducers/todosSlice'
 
 
 const Todos = () => {
     // const [todos, setTodos] = useState()
+
     const todos = useSelector(todosSelector)
     const dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch(getTodos())
+
+    },[dispatch])
 
     const toggleTodoCompleted = todoId => {
 		 console.log(todoId)

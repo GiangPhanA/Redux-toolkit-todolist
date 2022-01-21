@@ -1,25 +1,10 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit'
+import axios from 'axios'
 
 const todosSlice = createSlice({
     name: 'todos',
     initialState: {
-        allTodos: [
-            {
-            id: 1,
-            title: 'viec 1',
-            completed: false
-            },
-            {
-                id: 2,
-                title: 'viec 2',
-                completed: false
-            },
-            {
-                id: 3,
-                title: 'viec 3',
-                completed: false
-            }
-        ]
+        allTodos: []
     },
     // khai bao 1 cv moi reducer bao gom action creator, acton, reducer
     reducers: {
@@ -50,9 +35,37 @@ const todosSlice = createSlice({
         deleteTodo(state, action) {
 			const todoId = action.payload
 			state.allTodos = state.allTodos.filter(todo => todo.id !== todoId)
-		}
+		},
+        // async getAllTodos(state, action) {
+        //     try {
+        //         const response = await axios.get('https://61b0bbb13c954f001722a5fb.mockapi.io/api/todo')
+        //         state.allTodos = response.data
+        //     }
+        //     catch (error) {
+        //         console.log(error)
+        //     }
+        // }
+
+        todosFetched(state, action) {
+            state.allTodos = action.payload
+        }
     }
 })
+
+// Asynnc action creator, action and reducer dispatch
+export const getTodos = () => {
+    const getTodosAsync = async dispatch => {
+        try {
+            const response = await axios.get('https://61b0bbb13c954f001722a5fb.mockapi.io/api/todo')
+            dispatch(todosFetched(response.data))
+        }
+        catch (error) {
+            console.log(error)
+        }
+
+    }
+    return getTodosAsync
+}
 
 // Reducer
 const todosReducer = todosSlice.reducer
@@ -61,7 +74,7 @@ const todosReducer = todosSlice.reducer
 export const todosSelector = state => state.todosReducer.allTodos
 
 //export action
-export const {addTodo, markComplete, deleteTodo} = todosSlice.actions
+export const {addTodo, markComplete, deleteTodo, todosFetched} = todosSlice.actions
 
 //Export reducer
 
